@@ -13,18 +13,22 @@ with open("LICENSE", "r") as l:
 
 def main(page: ft.Page):
     license_dlg = ft.AlertDialog(title=ft.Text(applicense))
-    readme_dlg = ft.AlertDialog(title=ft.Text(readme))
+    readme_dlg = ft.AlertDialog(title=ft.Text(tr(csv_file=translation,target_key="ABOUT")),content=ft.Text(readme))
 
     def open_license_dlg(e):
+        page.dialog = license_dlg
         license_dlg.open = True
+        page.update()
 
     def open_readme_dlg(e):
+        page.dialog = readme_dlg
         readme_dlg.open = True
+        page.update()
 
     page.adaptive = True
     page.appbar = ft.AppBar(title=ft.Text("MySysInfo"))
     page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.icons.INFO, on_click=lambda e: self.open_readme_dlg(e)
+        icon=ft.icons.INFO, on_click=open_readme_dlg
     )
     page.add(ft.SafeArea(ft.Text(tr(csv_file=translation, target_key="HELLOWORLD"))))
 
