@@ -39,6 +39,8 @@ def main(page: ft.Page):
         page.update()
 
     page.adaptive = True
+    page.window_min_height = 500
+    page.window_min_width = 500
     page.appbar = ft.AppBar(
         title=ft.Text("MySysInfo"),
         # leading=ft.Image(
