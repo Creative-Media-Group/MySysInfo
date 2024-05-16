@@ -75,7 +75,20 @@ def main(page: ft.Page):
                     ft.DataColumn(
                         ft.Text(tr(csv_file=translation, target_key="VALUE"))
                     ),
-                ]
+                ],
+                rows=[
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="SYSTEM")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.system())),  # 1'st collumn
+                        ]
+                    )
+                ],
+                width=page.window_width,
             )
         )
     )
