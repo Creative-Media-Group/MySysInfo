@@ -19,7 +19,11 @@ def main(page: ft.Page):
     )
     readme_dlg = ft.AlertDialog(
         title=ft.Text(tr(csv_file=translation, target_key="ABOUT")),
-        content=ft.Markdown(readme, on_tap_link=lambda e: page.launch_url(e.data),extension_set=ft.MarkdownExtensionSet.GITHUB_WEB),
+        content=ft.Markdown(
+            readme,
+            on_tap_link=lambda e: page.launch_url(e.data),
+            extension_set=ft.MarkdownExtensionSet.GITHUB_WEB,
+        ),
         scrollable=True,
     )
 
@@ -36,9 +40,23 @@ def main(page: ft.Page):
     page.adaptive = True
     page.appbar = ft.AppBar(
         title=ft.Text("MySysInfo"),
-        leading=ft.Image(
-            src="assets/icon.png",
-        ),
+        # leading=ft.Image(
+        #    src="assets/icon.png",
+        # ),
+        actions=[
+            ft.PopupMenuButton(
+                items=[
+                    ft.PopupMenuItem(
+                        text=tr(csv_file=translation, target_key="ABOUT"),
+                        on_click=open_readme_dlg,
+                    ),
+                    ft.PopupMenuItem(
+                        text=tr(csv_file=translation, target_key="LICENSE"),
+                        on_click=open_license_dlg,
+                    ),
+                ]
+            ),
+        ],
     )
     page.floating_action_button = ft.FloatingActionButton(
         icon=ft.icons.INFO, on_click=open_readme_dlg
