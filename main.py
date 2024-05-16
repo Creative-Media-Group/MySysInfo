@@ -2,6 +2,7 @@ import flet as ft
 import locale
 from mylocale.TR import tr
 import platform as p
+import os
 
 lang = locale.getlocale()
 lang, _ = lang
@@ -85,6 +86,28 @@ def main(page: ft.Page):
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(p.system())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="USERNAME")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(
+                                ft.Text(str(os.getenv("$USER")))
+                            ),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="SYSTEM")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.version())),  # 2'nd collumn
                         ]
                     )
                 ],
