@@ -19,7 +19,7 @@ def main(page: ft.Page):
     )
     readme_dlg = ft.AlertDialog(
         title=ft.Text(tr(csv_file=translation, target_key="ABOUT")),
-        content=ft.Markdown(readme, on_tap_link=lambda e: page.launch_url(e.data)),
+        content=ft.Markdown(readme, on_tap_link=lambda e: page.launch_url(e.data),extension_set=ft.MarkdownExtensionSet.GITHUB_WEB),
         scrollable=True,
     )
 
