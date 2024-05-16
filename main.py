@@ -84,7 +84,7 @@ def main(page: ft.Page):
                                     tr(csv_file=translation, target_key="SYSTEM")
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(p.system())),  # 1'st collumn
+                            ft.DataCell(ft.Text(p.system())),  # 2'nd collumn
                         ]
                     )
                 ],
