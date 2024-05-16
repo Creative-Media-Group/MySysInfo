@@ -1,7 +1,7 @@
 import flet as ft
 import locale
 from mylocale.TR import tr
-import psutil as pu
+import platform as p
 
 lang = locale.getlocale()
 lang, _ = lang
