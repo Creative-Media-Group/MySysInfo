@@ -12,8 +12,14 @@ with open("LICENSE", "r") as l:
 
 
 def main(page: ft.Page):
-    license_dlg = ft.AlertDialog(title=ft.Text(applicense))
-    readme_dlg = ft.AlertDialog(title=ft.Text(tr(csv_file=translation,target_key="ABOUT")),content=ft.Text(readme))
+    license_dlg = ft.AlertDialog(
+        title=ft.Text("applicense"), content=ft.Text(""), scrollable=True
+    )
+    readme_dlg = ft.AlertDialog(
+        title=ft.Text(tr(csv_file=translation, target_key="ABOUT")),
+        content=ft.Markdown(readme, on_tap_link=lambda e: page.launch_url(e.data)),
+        scrollable=True,
+    )
 
     def open_license_dlg(e):
         page.dialog = license_dlg
