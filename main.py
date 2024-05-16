@@ -47,9 +47,9 @@ def main(page: ft.Page):
     page.window_min_width = 500
     page.appbar = ft.AppBar(
         title=ft.Text("MySysInfo"),
-        # leading=ft.Image(
-        #    src="assets/icon.png",
-        # ),
+        leading=ft.Image(
+            src="assets/icon.png",
+        ),
         actions=[
             ft.PopupMenuButton(
                 items=[
