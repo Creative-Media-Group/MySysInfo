@@ -1,5 +1,5 @@
 # A mysysinfo Flet app
-![icon.png](assets/icon.png "icon.png")
+<img src="assets/icon.png" alt="drawing" width="200"/>
 An example of a minimal Flet app.
 
 To run the app:
