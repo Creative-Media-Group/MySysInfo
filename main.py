@@ -3,6 +3,7 @@ import locale
 from mylocale.TR import tr
 import platform as p
 import os
+#import screen
 
 lang = locale.getlocale()
 lang, _ = lang
@@ -13,6 +14,7 @@ with open("LICENSE", "r") as l:
     applicense = l.read()
 architecture = p.architecture()
 architecture, _ = architecture
+architecture = f"{architecture} + {p.machine()}"
 
 
 def main(page: ft.Page):
@@ -119,87 +121,7 @@ def main(page: ft.Page):
                                     tr(csv_file=translation, target_key="ARCHITECTURE")
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
-                        ]
-                    ),
-                    ft.DataRow(
-                        cells=[
-                            ft.DataCell(
-                                ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
-                                )  # 1'st collumn
-                            ),
-                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                            ft.DataCell(ft.Text(architecture)),  # 2'nd collumn
                         ]
                     ),
                 ],
