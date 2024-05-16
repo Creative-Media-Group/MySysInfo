@@ -1,3 +1,2 @@
 flet
 mylocale
-py-cpuinfo
