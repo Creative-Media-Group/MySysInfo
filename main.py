@@ -39,6 +39,7 @@ def main(page: ft.Page):
         page.update()
 
     page.adaptive = True
+    # page.expand = True
     page.window_min_height = 500
     page.window_min_width = 500
     page.appbar = ft.AppBar(
@@ -64,7 +65,9 @@ def main(page: ft.Page):
     page.floating_action_button = ft.FloatingActionButton(
         icon=ft.icons.INFO, on_click=open_readme_dlg
     )
-    page.add(ft.SafeArea(ft.Text(tr(csv_file=translation, target_key="HELLOWORLD"))))
+    page.add(ft.SafeArea(ft.DataTable(columns=[
+        ft.DataColumn(ft.Text(tr(csv_file=translation, target_key="PARAMETER")))
+    ])))
 
 
 ft.app(main)
