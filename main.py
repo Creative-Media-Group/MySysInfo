@@ -34,7 +34,12 @@ def main(page: ft.Page):
         page.update()
 
     page.adaptive = True
-    page.appbar = ft.AppBar(title=ft.Text("MySysInfo"),leading=ft.Image("assets/icon.png"))
+    page.appbar = ft.AppBar(
+        title=ft.Text("MySysInfo"),
+        leading=ft.Image(
+            src="assets/icon.png",
+        ),
+    )
     page.floating_action_button = ft.FloatingActionButton(
         icon=ft.icons.INFO, on_click=open_readme_dlg
     )
