@@ -15,11 +15,11 @@ with open("LICENSE", "r") as l:
     applicense = l.read()
 architecture = p.architecture()
 architecture, _ = architecture
-architecture = f"{architecture} + {p.machine()}"
 processor = p.processor()
 version = p.version()
 node = p.node()
 machine = p.machine()
+release = p.release()
 
 
 def main(page: ft.Page):
