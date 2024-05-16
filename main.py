@@ -119,7 +119,7 @@ def main(page: ft.Page):
                                     tr(csv_file=translation, target_key="ARCHITECTURE")
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(architecture)),  # 2'nd collumn
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
                         ]
                     ),
                 ],
