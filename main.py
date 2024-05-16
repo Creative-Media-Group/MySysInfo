@@ -3,7 +3,8 @@ import locale
 from mylocale.TR import tr
 import platform as p
 import os
-#import screen
+
+# import screen
 
 lang = locale.getlocale()
 lang, _ = lang
