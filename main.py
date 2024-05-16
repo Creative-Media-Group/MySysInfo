@@ -1,6 +1,7 @@
 import flet as ft
 import locale
 from mylocale.TR import tr
+import psutil as pu
 
 lang = locale.getlocale()
 lang, _ = lang
