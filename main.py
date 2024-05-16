@@ -16,6 +16,10 @@ with open("LICENSE", "r") as l:
 architecture = p.architecture()
 architecture, _ = architecture
 architecture = f"{architecture} + {p.machine()}"
+processor = p.processor()
+version = p.version()
+node = p.node()
+machine = p.machine()
 
 
 def main(page: ft.Page):
@@ -112,7 +116,7 @@ def main(page: ft.Page):
                                     tr(csv_file=translation, target_key="VERSION")
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(p.version())),  # 2'nd collumn
+                            ft.DataCell(ft.Text(version)),  # 2'nd collumn
                         ]
                     ),
                     ft.DataRow(
@@ -123,6 +127,26 @@ def main(page: ft.Page):
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(architecture)),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="PROCESSORTYPE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(machine)),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="HOSTNAME")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(node)),  # 2'nd collumn
                         ]
                     ),
                 ],
