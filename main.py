@@ -11,6 +11,8 @@ with open("README.md", "r") as readme:
     readme = readme.read()
 with open("LICENSE", "r") as l:
     applicense = l.read()
+architecture = p.architecture()
+architecture, _ = architecture
 
 
 def main(page: ft.Page):
@@ -85,7 +87,7 @@ def main(page: ft.Page):
                                     tr(csv_file=translation, target_key="SYSTEM")
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(p.system())),  # 2'nd collumn
+                            ft.DataCell(ft.Text(page.platform.value)),  # 2'nd collumn
                         ]
                     ),
                     ft.DataRow(
@@ -96,7 +98,7 @@ def main(page: ft.Page):
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(
-                                ft.Text(str(os.getenv("$USER")))
+                                ft.Text(str(os.getenv("USER")))
                             ),  # 2'nd collumn
                         ]
                     ),
@@ -104,12 +106,22 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="SYSTEM")
+                                    tr(csv_file=translation, target_key="VERSION")
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(p.version())),  # 2'nd collumn
                         ]
-                    )
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(architecture)),  # 2'nd collumn
+                        ]
+                    ),
                 ],
                 width=page.window_width,
             )

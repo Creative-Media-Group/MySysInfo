@@ -6,3 +6,5 @@ PARAMETER,Parameter,Parameter
 VALUE,Value,Wert
 SYSTEM,System,System
 USERNAME,Username,Benutzername
+VERSION,Version,Version
+ARCHITECTURE,Processorarchitecture,Prozessorarchitektur
