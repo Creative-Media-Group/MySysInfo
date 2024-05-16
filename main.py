@@ -42,7 +42,7 @@ def main(page: ft.Page):
         page.update()
 
     page.adaptive = True
-    # page.expand = True
+    page.scroll = True
     page.window_min_height = 500
     page.window_min_width = 500
     page.appbar = ft.AppBar(
@@ -110,6 +110,86 @@ def main(page: ft.Page):
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(p.version())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
+                        ]
+                    ),
+                    ft.DataRow(
+                        cells=[
+                            ft.DataCell(
+                                ft.Text(
+                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                )  # 1'st collumn
+                            ),
+                            ft.DataCell(ft.Text(p.machine())),  # 2'nd collumn
                         ]
                     ),
                     ft.DataRow(
