@@ -24,12 +24,12 @@ release = p.release()
 
 def main(page: ft.Page):
     license_dlg = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=translation, target_key="LICENSE")),
+        title=ft.Text(tr(csv_file=translation, target_key="LICENSE", langcode=lang)),
         content=ft.Text(applicense),
         scrollable=True,
     )
     readme_dlg = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=translation, target_key="ABOUT")),
+        title=ft.Text(tr(csv_file=translation, target_key="ABOUT", langcode=lang)),
         content=ft.Markdown(
             readme,
             on_tap_link=lambda e: page.launch_url(e.data),
@@ -59,11 +59,15 @@ def main(page: ft.Page):
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        text=tr(csv_file=translation, target_key="ABOUT"),
+                        text=tr(
+                            csv_file=translation, target_key="ABOUT", langcode=lang
+                        ),
                         on_click=open_readme_dlg,
                     ),
                     ft.PopupMenuItem(
-                        text=tr(csv_file=translation, target_key="LICENSE"),
+                        text=tr(
+                            csv_file=translation, target_key="LICENSE", langcode=lang
+                        ),
                         on_click=open_license_dlg,
                     ),
                 ]
@@ -78,10 +82,18 @@ def main(page: ft.Page):
             ft.DataTable(
                 columns=[
                     ft.DataColumn(
-                        ft.Text(tr(csv_file=translation, target_key="PARAMETER"))
+                        ft.Text(
+                            tr(
+                                csv_file=translation,
+                                target_key="PARAMETER",
+                                langcode=lang,
+                            )
+                        )
                     ),
                     ft.DataColumn(
-                        ft.Text(tr(csv_file=translation, target_key="VALUE"))
+                        ft.Text(
+                            tr(csv_file=translation, target_key="VALUE", langcode=lang)
+                        )
                     ),
                 ],
                 rows=[
@@ -89,7 +101,11 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="SYSTEM")
+                                    tr(
+                                        csv_file=translation,
+                                        target_key="SYSTEM",
+                                        langcode=lang,
+                                    )
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(page.platform.value)),  # 2'nd collumn
@@ -99,7 +115,11 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="USERNAME")
+                                    tr(
+                                        csv_file=translation,
+                                        target_key="USERNAME",
+                                        langcode=lang,
+                                    )
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(
@@ -111,7 +131,11 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="VERSION")
+                                    tr(
+                                        csv_file=translation,
+                                        target_key="VERSION",
+                                        langcode=lang,
+                                    )
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(version)),  # 2'nd collumn
@@ -121,7 +145,11 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="ARCHITECTURE")
+                                    tr(
+                                        csv_file=translation,
+                                        target_key="ARCHITECTURE",
+                                        langcode=lang,
+                                    )
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(architecture)),  # 2'nd collumn
@@ -131,7 +159,11 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="PROCESSORTYPE")
+                                    tr(
+                                        csv_file=translation,
+                                        target_key="PROCESSORTYPE",
+                                        langcode=lang,
+                                    )
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(machine)),  # 2'nd collumn
@@ -141,7 +173,11 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(csv_file=translation, target_key="HOSTNAME")
+                                    tr(
+                                        csv_file=translation,
+                                        target_key="HOSTNAME",
+                                        langcode=lang,
+                                    )
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(ft.Text(node)),  # 2'nd collumn
