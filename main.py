@@ -39,19 +39,17 @@ def main(page: ft.Page):
     )
 
     def open_license_dlg(e):
-        page.dialog = license_dlg
-        license_dlg.open = True
+        page.open(license_dlg)
         page.update()
 
     def open_readme_dlg(e):
-        page.dialog = readme_dlg
-        readme_dlg.open = True
+        page.open(readme_dlg)
         page.update()
 
     page.adaptive = True
     page.scroll = True
-    page.window_min_height = 500
-    page.window_min_width = 500
+    page.window.min_height = 500
+    page.window.min_width = 500
     page.appbar = ft.AppBar(
         title=ft.Text("MySysInfo"),
         leading=ft.Image(
@@ -150,7 +148,7 @@ def main(page: ft.Page):
                         ]
                     ),
                 ],
-                width=page.window_width,
+                width=page.window.width,
             )
         )
     )
