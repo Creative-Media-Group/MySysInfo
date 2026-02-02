@@ -1,14 +1,15 @@
 import flet as ft
 import locale
-from mylocale.TR import tr
+from mylocale import TR
 import platform as p
 import os
+from pathlib import Path
 
 # import screen
 
 lang = locale.getlocale()
 lang, _ = lang
-translation = "assets/translation/localisation.csv"
+translation = Path("assets/translation/localisation.csv")
 with open("README.md", "r") as readme:
     readme = readme.read()
 with open("LICENSE", "r") as l:
@@ -23,13 +24,14 @@ release = p.release()
 
 
 def main(page: ft.Page):
+    tr = TR(langcode=lang, csv_file=translation)
     license_dlg = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=translation, target_key="LICENSE", langcode=lang)),
+        title=ft.Text(tr.tr(csv_file=translation, target_key="LICENSE", langcode=lang)),
         content=ft.Text(applicense),
         scrollable=True,
     )
     readme_dlg = ft.AlertDialog(
-        title=ft.Text(tr(csv_file=translation, target_key="ABOUT", langcode=lang)),
+        title=ft.Text(tr.tr(csv_file=translation, target_key="ABOUT", langcode=lang)),
         content=ft.Markdown(
             readme,
             on_tap_link=lambda e: page.launch_url(e.data),
@@ -59,13 +61,13 @@ def main(page: ft.Page):
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        text=tr(
+                        text=tr.tr(
                             csv_file=translation, target_key="ABOUT", langcode=lang
                         ),
                         on_click=open_readme_dlg,
                     ),
                     ft.PopupMenuItem(
-                        text=tr(
+                        text=tr.tr(
                             csv_file=translation, target_key="LICENSE", langcode=lang
                         ),
                         on_click=open_license_dlg,
@@ -83,7 +85,7 @@ def main(page: ft.Page):
                 columns=[
                     ft.DataColumn(
                         ft.Text(
-                            tr(
+                            tr.tr(
                                 csv_file=translation,
                                 target_key="PARAMETER",
                                 langcode=lang,
@@ -92,7 +94,9 @@ def main(page: ft.Page):
                     ),
                     ft.DataColumn(
                         ft.Text(
-                            tr(csv_file=translation, target_key="VALUE", langcode=lang)
+                            tr.tr(
+                                csv_file=translation, target_key="VALUE", langcode=lang
+                            )
                         )
                     ),
                 ],
@@ -101,7 +105,7 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(
+                                    tr.tr(
                                         csv_file=translation,
                                         target_key="SYSTEM",
                                         langcode=lang,
@@ -115,7 +119,7 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(
+                                    tr.tr(
                                         csv_file=translation,
                                         target_key="USERNAME",
                                         langcode=lang,
@@ -131,7 +135,7 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(
+                                    tr.tr(
                                         csv_file=translation,
                                         target_key="VERSION",
                                         langcode=lang,
@@ -145,7 +149,7 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(
+                                    tr.tr(
                                         csv_file=translation,
                                         target_key="ARCHITECTURE",
                                         langcode=lang,
@@ -159,7 +163,7 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(
+                                    tr.tr(
                                         csv_file=translation,
                                         target_key="PROCESSORTYPE",
                                         langcode=lang,
@@ -173,7 +177,7 @@ def main(page: ft.Page):
                         cells=[
                             ft.DataCell(
                                 ft.Text(
-                                    tr(
+                                    tr.tr(
                                         csv_file=translation,
                                         target_key="HOSTNAME",
                                         langcode=lang,
@@ -190,4 +194,4 @@ def main(page: ft.Page):
     )
 
 
-ft.app(main)
+ft.run(main=main)
