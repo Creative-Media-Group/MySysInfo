@@ -9,10 +9,10 @@ from pathlib import Path
 
 lang = locale.getlocale()
 lang, _ = lang
-translation = Path("assets/translation/localisation.csv")
-with open("README.md", "r") as readme:
+translation = Path(__file__).parent / "assets/translation/localisation.csv"
+with open(Path(__file__).parent.parent / "README.md", "r") as readme:
     readme = readme.read()
-with open("LICENSE", "r") as l:
+with open(Path(__file__).parent.parent / "LICENSE", "r") as l:
     applicense = l.read()
 architecture = p.architecture()
 architecture, _ = architecture
@@ -26,12 +26,12 @@ release = p.release()
 def main(page: ft.Page):
     tr = TR(langcode=lang, csv_file=translation)
     license_dlg = ft.AlertDialog(
-        title=ft.Text(tr.tr(csv_file=translation, target_key="LICENSE", langcode=lang)),
+        title=ft.Text(tr.tr(target_key="LICENSE", langcode=lang)),
         content=ft.Text(applicense),
         scrollable=True,
     )
     readme_dlg = ft.AlertDialog(
-        title=ft.Text(tr.tr(csv_file=translation, target_key="ABOUT", langcode=lang)),
+        title=ft.Text(tr.tr(target_key="ABOUT", langcode=lang)),
         content=ft.Markdown(
             readme,
             on_tap_link=lambda e: page.launch_url(e.data),
@@ -39,14 +39,6 @@ def main(page: ft.Page):
         ),
         scrollable=True,
     )
-
-    def open_license_dlg(e):
-        page.open(license_dlg)
-        page.update()
-
-    def open_readme_dlg(e):
-        page.open(readme_dlg)
-        page.update()
 
     page.adaptive = True
     page.scroll = True
@@ -61,23 +53,19 @@ def main(page: ft.Page):
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        text=tr.tr(
-                            csv_file=translation, target_key="ABOUT", langcode=lang
-                        ),
-                        on_click=open_readme_dlg,
+                        content=tr.tr(target_key="ABOUT", langcode=lang),
+                        on_click=lambda e: page.show_dialog(readme_dlg),
                     ),
                     ft.PopupMenuItem(
-                        text=tr.tr(
-                            csv_file=translation, target_key="LICENSE", langcode=lang
-                        ),
-                        on_click=open_license_dlg,
+                        content=tr.tr(target_key="LICENSE", langcode=lang),
+                        on_click=lambda e: page.show_dialog(license_dlg),
                     ),
                 ]
             ),
         ],
     )
     page.floating_action_button = ft.FloatingActionButton(
-        icon=ft.icons.INFO, on_click=open_readme_dlg
+        icon=ft.Icons.INFO, on_click=lambda e: page.show_dialog(readme_dlg)
     )
     page.add(
         ft.SafeArea(
@@ -86,19 +74,12 @@ def main(page: ft.Page):
                     ft.DataColumn(
                         ft.Text(
                             tr.tr(
-                                csv_file=translation,
                                 target_key="PARAMETER",
                                 langcode=lang,
                             )
                         )
                     ),
-                    ft.DataColumn(
-                        ft.Text(
-                            tr.tr(
-                                csv_file=translation, target_key="VALUE", langcode=lang
-                            )
-                        )
-                    ),
+                    ft.DataColumn(ft.Text(tr.tr(target_key="VALUE", langcode=lang))),
                 ],
                 rows=[
                     ft.DataRow(
@@ -106,7 +87,6 @@ def main(page: ft.Page):
                             ft.DataCell(
                                 ft.Text(
                                     tr.tr(
-                                        csv_file=translation,
                                         target_key="SYSTEM",
                                         langcode=lang,
                                     )
@@ -120,7 +100,6 @@ def main(page: ft.Page):
                             ft.DataCell(
                                 ft.Text(
                                     tr.tr(
-                                        csv_file=translation,
                                         target_key="USERNAME",
                                         langcode=lang,
                                     )
@@ -136,7 +115,6 @@ def main(page: ft.Page):
                             ft.DataCell(
                                 ft.Text(
                                     tr.tr(
-                                        csv_file=translation,
                                         target_key="VERSION",
                                         langcode=lang,
                                     )
@@ -150,7 +128,6 @@ def main(page: ft.Page):
                             ft.DataCell(
                                 ft.Text(
                                     tr.tr(
-                                        csv_file=translation,
                                         target_key="ARCHITECTURE",
                                         langcode=lang,
                                     )
@@ -164,7 +141,6 @@ def main(page: ft.Page):
                             ft.DataCell(
                                 ft.Text(
                                     tr.tr(
-                                        csv_file=translation,
                                         target_key="PROCESSORTYPE",
                                         langcode=lang,
                                     )
@@ -178,7 +154,6 @@ def main(page: ft.Page):
                             ft.DataCell(
                                 ft.Text(
                                     tr.tr(
-                                        csv_file=translation,
                                         target_key="HOSTNAME",
                                         langcode=lang,
                                     )
