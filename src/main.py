@@ -9,11 +9,7 @@ from pathlib import Path
 
 lang = locale.getlocale()
 lang, _ = lang
-translation = Path(__file__).parent / "assets/translation/localisation.csv"
-with open(Path(__file__).parent.parent / "README.md", "r") as readme:
-    readme = readme.read()
-with open(Path(__file__).parent.parent / "LICENSE", "r") as l:
-    applicense = l.read()
+
 architecture = p.architecture()
 architecture, _ = architecture
 processor = p.processor()
@@ -24,6 +20,11 @@ release = p.release()
 
 
 def main(page: ft.Page):
+    translation = "assets/translation/localisation.csv"
+    with open("assets/README.md", "r") as readme:
+        readme = readme.read()
+    with open("assets/LICENSE", "r") as l:
+        applicense = l.read()
     tr = TR(langcode=lang, csv_file=translation)
     license_dlg = ft.AlertDialog(
         title=ft.Text(tr.tr(target_key="LICENSE", langcode=lang)),
