@@ -20,45 +20,45 @@ release = p.release()
 
 
 def main(page: ft.Page):
-    translation = "assets/translation/localisation.csv"
-    with open("assets/README.md", "r") as readme:
+    translation = "src/assets/translation/localisation.csv"
+    with open("src/assets/README.md", "r") as readme:
         readme = readme.read()
-    with open("assets/LICENSE", "r") as l:
+    with open("src/assets/LICENSE", "r") as l:
         applicense = l.read()
-    tr = TR(langcode=lang, csv_file=translation)
+    tr = TR(langcode=f"{lang}", csv_file=translation)
     license_dlg = ft.AlertDialog(
-        title=ft.Text(tr.tr(target_key="LICENSE", langcode=lang)),
+        title=ft.Text(tr.tr(target_key="LICENSE", langcode=f"{lang}")),
         content=ft.Text(applicense),
         scrollable=True,
     )
     readme_dlg = ft.AlertDialog(
-        title=ft.Text(tr.tr(target_key="ABOUT", langcode=lang)),
+        title=ft.Text(tr.tr(target_key="ABOUT", langcode=f"{lang}")),
         content=ft.Markdown(
             readme,
-            on_tap_link=lambda e: page.launch_url(e.data),
+            on_tap_link=lambda e: page.launch_url(url=f"{e.data}"),
             extension_set=ft.MarkdownExtensionSet.GITHUB_WEB,
         ),
         scrollable=True,
     )
 
     page.adaptive = True
-    page.scroll = True
+    page.scroll = ft.ScrollMode.AUTO
     page.window.min_height = 500
     page.window.min_width = 500
     page.appbar = ft.AppBar(
         title=ft.Text("MySysInfo"),
         leading=ft.Image(
-            src="assets/icon.png",
+            src="src/assets/icon.png",
         ),
         actions=[
             ft.PopupMenuButton(
                 items=[
                     ft.PopupMenuItem(
-                        content=tr.tr(target_key="ABOUT", langcode=lang),
+                        content=tr.tr(target_key="ABOUT", langcode=f"{lang}"),
                         on_click=lambda e: page.show_dialog(readme_dlg),
                     ),
                     ft.PopupMenuItem(
-                        content=tr.tr(target_key="LICENSE", langcode=lang),
+                        content=tr.tr(target_key="LICENSE", langcode=f"{lang}"),
                         on_click=lambda e: page.show_dialog(license_dlg),
                     ),
                 ]
@@ -73,14 +73,16 @@ def main(page: ft.Page):
             ft.DataTable(
                 columns=[
                     ft.DataColumn(
-                        ft.Text(
+                        label=ft.Text(
                             tr.tr(
                                 target_key="PARAMETER",
-                                langcode=lang,
+                                langcode=f"{lang}",
                             )
                         )
                     ),
-                    ft.DataColumn(ft.Text(tr.tr(target_key="VALUE", langcode=lang))),
+                    ft.DataColumn(
+                        label=ft.Text(tr.tr(target_key="VALUE", langcode=f"{lang}"))
+                    ),
                 ],
                 rows=[
                     ft.DataRow(
@@ -89,7 +91,7 @@ def main(page: ft.Page):
                                 ft.Text(
                                     tr.tr(
                                         target_key="SYSTEM",
-                                        langcode=lang,
+                                        langcode=f"{lang}",
                                     )
                                 )  # 1'st collumn
                             ),
@@ -102,7 +104,7 @@ def main(page: ft.Page):
                                 ft.Text(
                                     tr.tr(
                                         target_key="USERNAME",
-                                        langcode=lang,
+                                        langcode=f"{lang}",
                                     )
                                 )  # 1'st collumn
                             ),
@@ -117,7 +119,7 @@ def main(page: ft.Page):
                                 ft.Text(
                                     tr.tr(
                                         target_key="VERSION",
-                                        langcode=lang,
+                                        langcode=f"{lang}",
                                     )
                                 )  # 1'st collumn
                             ),
@@ -130,7 +132,7 @@ def main(page: ft.Page):
                                 ft.Text(
                                     tr.tr(
                                         target_key="ARCHITECTURE",
-                                        langcode=lang,
+                                        langcode=f"{lang}",
                                     )
                                 )  # 1'st collumn
                             ),
@@ -143,7 +145,7 @@ def main(page: ft.Page):
                                 ft.Text(
                                     tr.tr(
                                         target_key="PROCESSORTYPE",
-                                        langcode=lang,
+                                        langcode=f"{lang}",
                                     )
                                 )  # 1'st collumn
                             ),
@@ -156,7 +158,7 @@ def main(page: ft.Page):
                                 ft.Text(
                                     tr.tr(
                                         target_key="HOSTNAME",
-                                        langcode=lang,
+                                        langcode=f"{lang}",
                                     )
                                 )  # 1'st collumn
                             ),
