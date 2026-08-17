@@ -96,7 +96,7 @@ def main(page: ft.Page):
                                 )  # 1'st collumn
                             ),
                             ft.DataCell(
-                                ft.Text(str(page.platform.value))
+                                ft.Text(str(page.platform.name))
                             ),  # 2'nd collumn
                         ]
                     ),
