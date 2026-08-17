@@ -95,7 +95,9 @@ def main(page: ft.Page):
                                     )
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(page.platform.value)),  # 2'nd collumn
+                            ft.DataCell(
+                                ft.Text(str(page.platform.value))
+                            ),  # 2'nd collumn
                         ]
                     ),
                     ft.DataRow(
@@ -136,7 +138,7 @@ def main(page: ft.Page):
                                     )
                                 )  # 1'st collumn
                             ),
-                            ft.DataCell(ft.Text(architecture)),  # 2'nd collumn
+                            ft.DataCell(ft.Text(str(architecture))),  # 2'nd collumn
                         ]
                     ),
                     ft.DataRow(
